@@ -1,7 +1,5 @@
 ﻿namespace AnimalFarm {
-    public interface ICreature {
-
-        IFactoryCreate<IEgg> Factory { get; set; }
+    public interface ICreature : IProducer<IEgg> {
 
         IEgg Lay();
 

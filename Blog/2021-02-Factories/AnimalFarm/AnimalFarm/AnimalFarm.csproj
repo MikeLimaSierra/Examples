@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AnimalFarm\AnimalFarm.csproj" />
+    <ProjectReference Include="..\AnimalFarm.Contracts\AnimalFarm.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
