@@ -1,5 +1,7 @@
 ﻿using System;
 
+using AnimalFarm.Birds;
+
 namespace AnimalFarm.Demo {
     class Program {
         static void Main(String[] args) {

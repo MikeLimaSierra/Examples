@@ -1,4 +1,4 @@
-﻿namespace AnimalFarm {
+﻿namespace AnimalFarm.Birds {
     internal class Chicken : ICreature {
 
         public IFactoryCreate<IEgg> Factory { get; set; } = new ChickenFactory();
