@@ -2,10 +2,10 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace CommunicationModule {
+namespace CommunicationModule.Pipes {
 
-    // default implementation that works on all platforms and uses inefficient voodoo.
-    internal class DataChannel : IDataChannel {
+    // high performance implementation based on named pipes, only available on windows systems.
+    internal class NamedPipeDataChannel : IDataChannel {
 
         #region properties
 
@@ -13,7 +13,7 @@ namespace CommunicationModule {
 
         #region ctors
 
-        internal DataChannel() {
+        internal NamedPipeDataChannel() {
             // ...
         }
 
