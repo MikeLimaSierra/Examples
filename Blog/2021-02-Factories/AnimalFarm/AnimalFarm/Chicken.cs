@@ -1,8 +1,10 @@
 ﻿namespace AnimalFarm {
     internal class Chicken : ICreature {
 
+        public IFactoryCreate<IEgg> Factory { get; set; } = new ChickenFactory();
+
         public IEgg Lay() {
-            Factory.Chicken.Create(out IEgg obj);
+            Factory.Create(out IEgg obj);
             return obj;
         }
 

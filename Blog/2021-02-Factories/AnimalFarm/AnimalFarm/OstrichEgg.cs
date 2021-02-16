@@ -1,8 +1,10 @@
 ﻿namespace AnimalFarm {
     internal class OstrichEgg : IEgg {
 
+        public IFactoryCreate<ICreature> Factory { get; set; } = new OstrichFactory();
+
         public ICreature Hatch() {
-            Factory.Ostrich.Create(out ICreature obj);
+            Factory.Create(out ICreature obj);
             return obj;
         }
 
