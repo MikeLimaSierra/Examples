@@ -1,7 +1,9 @@
 ﻿namespace AnimalFarm {
     public static class Factory {
 
-        public static IFactory Instance => new InternalFactory();
+        public static IFactory Chicken => new ChickenFactory();
+
+        public static IFactory Ostrich => new OstrichFactory();
 
     }
 }

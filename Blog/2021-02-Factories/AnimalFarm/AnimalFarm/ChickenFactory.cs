@@ -1,5 +1,5 @@
 ﻿namespace AnimalFarm {
-    internal class InternalFactory : IFactory {
+    internal class ChickenFactory : IFactory {
 
         public IEgg CreateEgg() => new ChickenEgg();
 
