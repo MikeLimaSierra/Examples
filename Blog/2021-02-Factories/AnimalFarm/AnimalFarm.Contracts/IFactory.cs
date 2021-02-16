@@ -1,9 +1,3 @@
 ﻿namespace AnimalFarm {
-    public interface IFactory {
-
-        IEgg CreateEgg();
-
-        ICreature CreateCreature();
-
-    }
+    public interface IFactory : IFactoryCreate<IEgg>, IFactoryCreate<ICreature> { }
 }

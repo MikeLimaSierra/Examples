@@ -1,9 +1,9 @@
 ﻿namespace AnimalFarm {
     internal class OstrichFactory : IFactory {
 
-        public IEgg CreateEgg() => new OstrichEgg();
+        public void Create(out IEgg obj) => obj = new OstrichEgg();
 
-        public ICreature CreateCreature() => new Ostrich();
+        public void Create(out ICreature obj) => obj = new Ostrich();
 
     }
 }
