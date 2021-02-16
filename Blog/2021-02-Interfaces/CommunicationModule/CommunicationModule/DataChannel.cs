@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace CommunicationModule {
-    public class DataChannel : IDataChannel {
+    internal class DataChannel : IDataChannel {
 
         #region properties
 
@@ -11,7 +11,7 @@ namespace CommunicationModule {
 
         #region ctors
 
-        public DataChannel() {
+        internal DataChannel() {
             // ...
         }
 
