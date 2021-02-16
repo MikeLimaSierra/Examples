@@ -4,7 +4,7 @@ namespace AnimalFarm.Demo {
     class Program {
         static void Main(String[] args) {
 
-            IEgg egg_1 = Factory.CreateEgg();
+            IEgg egg_1 = new Factory().CreateEgg();
             Console.WriteLine($"Created {egg_1.GetType().Name} ({nameof(egg_1)})");
 
             ICreature creature_1 = egg_1.Hatch();

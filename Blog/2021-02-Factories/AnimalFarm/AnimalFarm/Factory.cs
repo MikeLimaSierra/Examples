@@ -1,9 +1,9 @@
 ﻿namespace AnimalFarm {
-    public static class Factory {
+    public class Factory : IFactory {
 
-        public static IEgg CreateEgg() => new ChickenEgg();
+        public IEgg CreateEgg() => new ChickenEgg();
 
-        public static ICreature CreateCreature() => new Chicken();
+        public ICreature CreateCreature() => new Chicken();
 
     }
 }

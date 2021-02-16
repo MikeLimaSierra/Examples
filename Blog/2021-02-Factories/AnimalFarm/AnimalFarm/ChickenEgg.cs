@@ -1,7 +1,7 @@
 ﻿namespace AnimalFarm {
     internal class ChickenEgg : IEgg {
 
-        public ICreature Hatch() => Factory.CreateCreature();
+        public ICreature Hatch() => new Factory().CreateCreature();
 
     }
 }
