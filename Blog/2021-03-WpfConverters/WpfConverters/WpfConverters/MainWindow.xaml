@@ -8,11 +8,13 @@
         Title="MainWindow"
         Height="200"
         Width="400">
-
+    
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
                 <conv:BooleanToStringConverter x:Key="BooleanToStringConverter" />
+                <conv:BooleanToBorderBrushConverter x:Key="BooleanToBorderBrushConverter" />
+                <conv:BooleanToBackgroundBrushConverter x:Key="BooleanToBackgroundBrushConverter" />
             </ResourceDictionary>
         </Grid.Resources>
 
@@ -26,21 +28,23 @@
         </Grid.RowDefinitions>
 
         <Border
-        x:Name="Border"
-        Grid.Column="0" Grid.Row="0"
-        Margin="10" Padding="10" BorderThickness="5">
-
+            x:Name="Border"
+            Grid.Column="0" Grid.Row="0"
+            Margin="10" Padding="10" BorderThickness="5"
+            BorderBrush="{Binding ElementName=Button, Path=IsPressed, Converter={StaticResource BooleanToBorderBrushConverter}}"
+            Background="{Binding ElementName=Button, Path=IsPressed, Converter={StaticResource BooleanToBackgroundBrushConverter}}">
+            
             <TextBlock
-            x:Name="TextBlock"
-            VerticalAlignment="Center" HorizontalAlignment="Center"
-            Text="{Binding ElementName=Button, Path=IsPressed, Converter={StaticResource BooleanToStringConverter}}" />
+                x:Name="TextBlock"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                Text="{Binding ElementName=Button, Path=IsPressed, Converter={StaticResource BooleanToStringConverter}}" />
         </Border>
-
+        
         <Button
-        x:Name="Button"
-        Grid.Column="1" Grid.Row="0"
-        Margin="10" Padding="10"
-        Content="Press Me!"/>
+            x:Name="Button"            
+            Grid.Column="1" Grid.Row="0"
+            Margin="10" Padding="10"
+            Content="Press Me!"/>
+
     </Grid>
-    
 </Window>
