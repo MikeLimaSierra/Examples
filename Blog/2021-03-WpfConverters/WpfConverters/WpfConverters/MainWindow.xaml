@@ -17,26 +17,43 @@
 
         <Grid.RowDefinitions>
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <Border
-            x:Name="Border"
             Grid.Column="0" Grid.Row="0"
             Margin="10" Padding="10" BorderThickness="5"
             BorderBrush="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToBrushConverter True=Lime, False=WhiteSmoke}}"
             Background="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToBrushConverter True=Magenta, False=LightGray}}">
-            
+
             <TextBlock
-                x:Name="TextBlock"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
                 Text="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToStringConverter True='Pressed.', False='Not pressed.'}}" />
         </Border>
-        
+
         <Button
             x:Name="Button"            
             Grid.Column="1" Grid.Row="0"
             Margin="10" Padding="10"
             Content="Press Me!"/>
+
+        <Border
+            Grid.Column="0" Grid.Row="1"
+            Margin="10" Padding="10" BorderThickness="5"
+            BorderBrush="{Binding ElementName=CheckBox, Path=IsChecked, Converter={conv:NullableBooleanToBrushConverter True=Lime, False=WhiteSmoke, Null=Orange}}"
+            Background="{Binding ElementName=CheckBox, Path=IsChecked, Converter={conv:NullableBooleanToBrushConverter True=Magenta, False=LightGray, Null=Yellow}}">
+
+            <TextBlock
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                Text="{Binding ElementName=CheckBox, Path=IsChecked, Converter={conv:NullableBooleanToStringConverter True='Checked.', False='Not checked.', Null='Broken.'}}" />
+        </Border>
+
+        <CheckBox
+            x:Name="CheckBox"            
+            Grid.Column="1" Grid.Row="1"
+            Margin="10" Padding="10"
+            IsThreeState="True"
+            Content="Check Me!"/>
 
     </Grid>
 </Window>
