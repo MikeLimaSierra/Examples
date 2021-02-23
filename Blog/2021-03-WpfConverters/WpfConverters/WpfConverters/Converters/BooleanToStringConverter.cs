@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace WpfConverters.Converters {
@@ -7,12 +8,12 @@ namespace WpfConverters.Converters {
 
         public Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture) {
             if(value != null && value is Boolean boolean) {
-                return (boolean) ? "Pressed." : "Not pressed.";
+                return boolean ? "Pressed." : "Not pressed.";
             }
-            return "I'm broken :-(";
+            return DependencyProperty.UnsetValue;
         }
 
-        public Object ConvertBack(Object value, Type targetType, Object parameter, CultureInfo culture) => throw new NotImplementedException();
+        public Object ConvertBack(Object value, Type targetType, Object parameter, CultureInfo culture) => DependencyProperty.UnsetValue;
 
     }
 }
