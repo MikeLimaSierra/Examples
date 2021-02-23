@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Data;
 
 namespace WpfConverters.Converters.Base {
-    public class BooleanConverter<T> : IValueConverter {
+    public class BooleanConverter<T> : BaseValueConverter {
 
         #region properties
 
@@ -25,7 +24,7 @@ namespace WpfConverters.Converters.Base {
 
         #region methods
 
-        public Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture) {
+        public override Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture) {
             if(value != null && value is Boolean boolean) {
                 return boolean ? True : False;
             }
@@ -33,7 +32,7 @@ namespace WpfConverters.Converters.Base {
             return DependencyProperty.UnsetValue;
         }
 
-        public Object ConvertBack(Object value, Type targetType, Object parameter, CultureInfo culture) {
+        public override Object ConvertBack(Object value, Type targetType, Object parameter, CultureInfo culture) {
             if(value != null && value is T t) {
                 if(True.Equals(t)) { return true; }
                 if(False.Equals(t)) { return false; }

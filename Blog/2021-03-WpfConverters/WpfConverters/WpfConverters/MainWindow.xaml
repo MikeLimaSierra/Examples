@@ -10,14 +10,6 @@
         Width="400">
     
     <Grid>
-        <Grid.Resources>
-            <ResourceDictionary>
-                <conv:BooleanToStringConverter x:Key="BooleanToStringConverter" True="Pressed." False="Not pressed." />
-                <conv:BooleanToBrushConverter x:Key="BooleanToBorderBrushConverter" True="Lime" False="WhiteSmoke" />
-                <conv:BooleanToBrushConverter x:Key="BooleanToBackgroundBrushConverter" True="Magenta" False="LightGray" />
-            </ResourceDictionary>
-        </Grid.Resources>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -31,13 +23,13 @@
             x:Name="Border"
             Grid.Column="0" Grid.Row="0"
             Margin="10" Padding="10" BorderThickness="5"
-            BorderBrush="{Binding ElementName=Button, Path=IsPressed, Converter={StaticResource BooleanToBorderBrushConverter}}"
-            Background="{Binding ElementName=Button, Path=IsPressed, Converter={StaticResource BooleanToBackgroundBrushConverter}}">
+            BorderBrush="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToBrushConverter True=Lime, False=WhiteSmoke}}"
+            Background="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToBrushConverter True=Magenta, False=LightGray}}">
             
             <TextBlock
                 x:Name="TextBlock"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
-                Text="{Binding ElementName=Button, Path=IsPressed, Converter={StaticResource BooleanToStringConverter}}" />
+                Text="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToStringConverter True='Pressed.', False='Not pressed.'}}" />
         </Border>
         
         <Button
