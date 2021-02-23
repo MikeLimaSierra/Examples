@@ -12,9 +12,9 @@
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
-                <conv:BooleanToStringConverter x:Key="BooleanToStringConverter" />
-                <conv:BooleanToBorderBrushConverter x:Key="BooleanToBorderBrushConverter" />
-                <conv:BooleanToBackgroundBrushConverter x:Key="BooleanToBackgroundBrushConverter" />
+                <conv:BooleanToStringConverter x:Key="BooleanToStringConverter" True="Pressed." False="Not pressed." />
+                <conv:BooleanToBrushConverter x:Key="BooleanToBorderBrushConverter" True="Lime" False="WhiteSmoke" />
+                <conv:BooleanToBrushConverter x:Key="BooleanToBackgroundBrushConverter" True="Magenta" False="LightGray" />
             </ResourceDictionary>
         </Grid.Resources>
 
