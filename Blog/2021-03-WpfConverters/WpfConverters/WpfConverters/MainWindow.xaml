@@ -4,9 +4,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:conv="clr-namespace:WpfConverters.Converters"
+        xmlns:mconv="clr-namespace:WpfConverters.MultiConverters"
+        xmlns:bind="clr-namespace:WpfConverters.Binding"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="200"
+        Height="800"
         Width="400">
     
     <Grid>
@@ -16,37 +18,40 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
         </Grid.RowDefinitions>
 
         <Border
             Grid.Column="0" Grid.Row="0"
             Margin="10" Padding="10" BorderThickness="5"
-            BorderBrush="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToBrushConverter True=Lime, False=WhiteSmoke}}"
-            Background="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToBrushConverter True=Magenta, False=LightGray}}">
+            BorderBrush="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToBrushConverter True=Green, False=WhiteSmoke}}"
+            Background="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToBrushConverter True=Lime, False=LightGray}}">
 
             <TextBlock
                 VerticalAlignment="Center" HorizontalAlignment="Center"
                 Text="{Binding ElementName=Button, Path=IsPressed, Converter={conv:BooleanToStringConverter True='Pressed.', False='Not pressed.'}}" />
         </Border>
 
-        <Button
-            x:Name="Button"            
-            Grid.Column="1" Grid.Row="0"
-            Margin="10" Padding="10"
-            Content="Press Me!"/>
-
         <Border
-            Grid.Column="0" Grid.Row="1"
+            Grid.Column="1" Grid.Row="0"
             Margin="10" Padding="10" BorderThickness="5"
-            BorderBrush="{Binding ElementName=CheckBox, Path=IsChecked, Converter={conv:NullableBooleanToBrushConverter True=Lime, False=WhiteSmoke, Null=Orange}}"
-            Background="{Binding ElementName=CheckBox, Path=IsChecked, Converter={conv:NullableBooleanToBrushConverter True=Magenta, False=LightGray, Null=Yellow}}">
+            BorderBrush="{Binding ElementName=CheckBox, Path=IsChecked, Converter={conv:NullableBooleanToBrushConverter True=Green, False=WhiteSmoke, Null=Yellow}}"
+            Background="{Binding ElementName=CheckBox, Path=IsChecked, Converter={conv:NullableBooleanToBrushConverter True=Lime, False=LightGray, Null=Orange}}">
 
             <TextBlock
                 VerticalAlignment="Center" HorizontalAlignment="Center"
                 Text="{Binding ElementName=CheckBox, Path=IsChecked, Converter={conv:NullableBooleanToStringConverter True='Checked.', False='Not checked.', Null='Broken.'}}" />
         </Border>
+
+        <Button
+            x:Name="Button"            
+            Grid.Column="0" Grid.Row="1"
+            Margin="10" Padding="10"
+            Content="Press Me!"/>
 
         <CheckBox
             x:Name="CheckBox"            
@@ -54,6 +59,90 @@
             Margin="10" Padding="10"
             IsThreeState="True"
             Content="Check Me!"/>
+
+        <!--#region AND -->
+        <Border
+            Grid.Column="0" Grid.Row="2"
+            Margin="10" Padding="10" BorderThickness="5"
+            BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanAndToBrushConverter True=Green, False=WhiteSmoke}}"
+            Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanAndToBrushConverter True=Lime, False=LightGray}}">
+
+            <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                    Converter={mconv:BooleanAndToStringConverter True='AND: True', False='AND: False'}}"
+                VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+
+        <Border
+            Grid.Column="1" Grid.Row="2"
+            Margin="10" Padding="10" BorderThickness="5"
+            BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanNandToBrushConverter True=Green, False=WhiteSmoke}}"
+            Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanNandToBrushConverter True=Lime, False=LightGray}}">
+
+            <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                    Converter={mconv:BooleanNandToStringConverter True='NAND: True', False='NAND: False'}}"
+                VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+        <!--#endregion-->
+
+        <!--#region OR -->
+        <Border
+            Grid.Column="0" Grid.Row="3"
+            Margin="10" Padding="10" BorderThickness="5"
+            BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanOrToBrushConverter True=Green, False=WhiteSmoke}}"
+            Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanOrToBrushConverter True=Lime, False=LightGray}}">
+
+            <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                    Converter={mconv:BooleanOrToStringConverter True='OR: True', False='OR: False'}}"
+                VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+
+        <Border
+            Grid.Column="1" Grid.Row="3"
+            Margin="10" Padding="10" BorderThickness="5"
+            BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanNorToBrushConverter True=Green, False=WhiteSmoke}}"
+            Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanNorToBrushConverter True=Lime, False=LightGray}}">
+
+            <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                    Converter={mconv:BooleanNorToStringConverter True='NOR: True', False='NOR: False'}}"
+                VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+        <!--#endregion-->
+
+        <!--#region XOR -->
+        <Border
+            Grid.Column="0" Grid.Row="4"
+            Margin="10" Padding="10" BorderThickness="5"
+            BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanXorToBrushConverter True=Green, False=WhiteSmoke}}"
+            Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanXorToBrushConverter True=Lime, False=LightGray}}">
+
+            <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                    Converter={mconv:BooleanXorToStringConverter True='XOR: True', False='XOR: False'}}"
+                VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+
+        <Border
+            Grid.Column="1" Grid.Row="4"
+            Margin="10" Padding="10" BorderThickness="5"
+            BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanXnorToBrushConverter True=Green, False=WhiteSmoke}}"
+            Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                Converter={mconv:BooleanXnorToBrushConverter True=Lime, False=LightGray}}">
+
+            <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
+                    Converter={mconv:BooleanXnorToStringConverter True='XNOR: True', False='XNOR: False'}}"
+                VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+        <!--#endregion-->
 
     </Grid>
 </Window>
