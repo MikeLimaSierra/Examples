@@ -65,12 +65,12 @@
             Grid.Column="0" Grid.Row="2"
             Margin="10" Padding="10" BorderThickness="5"
             BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanAndToBrushConverter True=Green, False=WhiteSmoke}}"
+                Converter={mconv:LogicalGateToBrushConverter Gate=And, True=Green, False=WhiteSmoke}}"
             Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanAndToBrushConverter True=Lime, False=LightGray}}">
+                Converter={mconv:LogicalGateToBrushConverter True=Lime, False=LightGray}}">
 
             <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                    Converter={mconv:BooleanAndToStringConverter True='AND: True', False='AND: False'}}"
+                    Converter={mconv:LogicalGateToStringConverter Gate=And, True='AND: True', False='AND: False'}}"
                 VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Border>
 
@@ -78,12 +78,12 @@
             Grid.Column="1" Grid.Row="2"
             Margin="10" Padding="10" BorderThickness="5"
             BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanNandToBrushConverter True=Green, False=WhiteSmoke}}"
+                Converter={mconv:LogicalGateToBrushConverter Gate=Nand, True=Green, False=WhiteSmoke}}"
             Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanNandToBrushConverter True=Lime, False=LightGray}}">
+                Converter={mconv:LogicalGateToBrushConverter Gate=Nand, True=Lime, False=LightGray}}">
 
             <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                    Converter={mconv:BooleanNandToStringConverter True='NAND: True', False='NAND: False'}}"
+                    Converter={mconv:LogicalGateToStringConverter Gate=Nand, True='NAND: True', False='NAND: False'}}"
                 VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Border>
         <!--#endregion-->
@@ -93,12 +93,12 @@
             Grid.Column="0" Grid.Row="3"
             Margin="10" Padding="10" BorderThickness="5"
             BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanOrToBrushConverter True=Green, False=WhiteSmoke}}"
+                Converter={mconv:LogicalGateToBrushConverter Gate=Or, True=Green, False=WhiteSmoke}}"
             Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanOrToBrushConverter True=Lime, False=LightGray}}">
+                Converter={mconv:LogicalGateToBrushConverter Gate=Or, True=Lime, False=LightGray}}">
 
             <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                    Converter={mconv:BooleanOrToStringConverter True='OR: True', False='OR: False'}}"
+                    Converter={mconv:LogicalGateToStringConverter Gate=Or, True='OR: True', False='OR: False'}}"
                 VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Border>
 
@@ -106,12 +106,12 @@
             Grid.Column="1" Grid.Row="3"
             Margin="10" Padding="10" BorderThickness="5"
             BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanNorToBrushConverter True=Green, False=WhiteSmoke}}"
+                Converter={mconv:LogicalGateToBrushConverter Gate=Nor, True=Green, False=WhiteSmoke}}"
             Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanNorToBrushConverter True=Lime, False=LightGray}}">
+                Converter={mconv:LogicalGateToBrushConverter Gate=Nor, True=Lime, False=LightGray}}">
 
             <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                    Converter={mconv:BooleanNorToStringConverter True='NOR: True', False='NOR: False'}}"
+                    Converter={mconv:LogicalGateToStringConverter Gate=Nor, True='NOR: True', False='NOR: False'}}"
                 VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Border>
         <!--#endregion-->
@@ -121,12 +121,12 @@
             Grid.Column="0" Grid.Row="4"
             Margin="10" Padding="10" BorderThickness="5"
             BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanXorToBrushConverter True=Green, False=WhiteSmoke}}"
+                Converter={mconv:LogicalGateToBrushConverter Gate=Xor, True=Green, False=WhiteSmoke}}"
             Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanXorToBrushConverter True=Lime, False=LightGray}}">
+                Converter={mconv:LogicalGateToBrushConverter Gate=Xor, True=Lime, False=LightGray}}">
 
             <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                    Converter={mconv:BooleanXorToStringConverter True='XOR: True', False='XOR: False'}}"
+                    Converter={mconv:LogicalGateToStringConverter Gate=Xor, True='XOR: True', False='XOR: False'}}"
                 VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Border>
 
@@ -134,12 +134,12 @@
             Grid.Column="1" Grid.Row="4"
             Margin="10" Padding="10" BorderThickness="5"
             BorderBrush="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanXnorToBrushConverter True=Green, False=WhiteSmoke}}"
+                Converter={mconv:LogicalGateToBrushConverter Gate=Xnor, True=Green, False=WhiteSmoke}}"
             Background="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                Converter={mconv:BooleanXnorToBrushConverter True=Lime, False=LightGray}}">
+                Converter={mconv:LogicalGateToBrushConverter Gate=Xnor, True=Lime, False=LightGray}}">
 
             <TextBlock Text="{bind:MultiBinding {Binding ElementName=Button, Path=IsPressed}, {Binding ElementName=CheckBox, Path=IsChecked},
-                    Converter={mconv:BooleanXnorToStringConverter True='XNOR: True', False='XNOR: False'}}"
+                    Converter={mconv:LogicalGateToStringConverter Gate=Xnor, True='XNOR: True', False='XNOR: False'}}"
                 VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Border>
         <!--#endregion-->
