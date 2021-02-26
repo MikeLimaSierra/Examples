@@ -23,6 +23,7 @@
             <RowDefinition Height="70" />
             <RowDefinition Height="70" />
             <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
         </Grid.RowDefinitions>
 
         <Border
@@ -143,6 +144,26 @@
                 VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Border>
         <!--#endregion-->
+
+        <Border
+            Grid.Column="0" Grid.Row="5"
+            Margin="10" Padding="10" BorderThickness="5"            
+            Visibility="{Binding ElementName=Button, Path=IsPressed,
+                Converter={conv:Chain {conv:Link Converter={conv:NoOpConverter}}, {conv:Link Converter={conv:BooleanToVisibilityConverter}}}}"
+            BorderBrush="Green" Background="Lime">
+
+            <TextBlock Text="Pressed." VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+
+        <Border
+            Grid.Column="0" Grid.Row="5"
+            Margin="10" Padding="10" BorderThickness="5"
+            Visibility="{Binding ElementName=Button, Path=IsPressed,
+                Converter={conv:Chain {conv:Link Converter={conv:InvertedBooleanConverter}}, {conv:Link Converter={conv:BooleanToVisibilityConverter}}}}"
+            BorderBrush="WhiteSmoke" Background="LightGray">
+
+            <TextBlock Text="Not pressed." VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
 
     </Grid>
 </Window>
