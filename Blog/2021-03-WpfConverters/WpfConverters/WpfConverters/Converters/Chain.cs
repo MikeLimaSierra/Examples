@@ -2,10 +2,13 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Windows.Data;
 
 using WpfConverters.Converters.Base;
 
 namespace WpfConverters.Converters {
+
+    [ValueConversion(typeof(Object), typeof(Object))]
     public partial class Chain : BaseValueConverter {
 
         #region properties
