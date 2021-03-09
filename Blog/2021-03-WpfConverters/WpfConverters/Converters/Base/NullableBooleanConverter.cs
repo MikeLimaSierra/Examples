@@ -30,7 +30,11 @@ namespace WpfConverters.Converters.Base {
         public override Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture) {
             if(value == null) { return Null; }
 
-            return (value is Boolean boolean && boolean) ? True : False;
+            if(value is Boolean boolean) {
+                return boolean ? True : False;
+            }
+
+            return DependencyProperty.UnsetValue;
         }
 
         public override Object ConvertBack(Object value, Type targetType, Object parameter, CultureInfo culture) {
