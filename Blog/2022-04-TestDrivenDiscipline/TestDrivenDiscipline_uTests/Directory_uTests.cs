@@ -29,7 +29,7 @@ namespace TestDrivenDiscipline_uTests {
             DirectoryInfo dir = new DirectoryInfo(Path.Combine(_tempDir.FullName, "MyDir"));
             IDirectory sut = default;
 
-            Test.IfNot.Action.ThrowsException(() => sut = new Directory(dir), out ArgumentNullException _);
+            Test.IfNot.Action.ThrowsException(() => sut = new Directory(dir), out Exception _);
 
             Test.If.Object.IsOfExactType<RealFileSystem>(sut.FileSystem);
             Test.If.Value.IsEqual(sut.Name, dir.Name);
@@ -57,7 +57,7 @@ namespace TestDrivenDiscipline_uTests {
             DirectoryInfo dir = new DirectoryInfo(Path.Combine(_tempDir.FullName, "MyDir"));
             IDirectory sut = default;
 
-            Test.IfNot.Action.ThrowsException(() => sut = new Directory(fs, dir), out ArgumentNullException _);
+            Test.IfNot.Action.ThrowsException(() => sut = new Directory(fs, dir), out Exception _);
 
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Name, dir.Name);
@@ -85,7 +85,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsFalse(result);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -103,7 +102,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(result);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
         }
 
         #endregion
@@ -125,7 +123,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(dir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -144,7 +141,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(dir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -167,7 +163,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsFalse(fs.Exists(dir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -193,7 +188,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(dir.Parent));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -215,7 +209,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Enumerable.IsEmpty(result);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -233,7 +226,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Enumerable.IsEmpty(result);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -263,7 +255,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.IfNot.Enumerable.Contains(result, _ => _.FileSystem != fs);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -285,7 +276,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Enumerable.IsEmpty(result);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -303,7 +293,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Enumerable.IsEmpty(result);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -333,7 +322,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.IfNot.Enumerable.Contains(result, _ => _.FileSystem != fs);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -355,7 +343,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Enumerable.IsEmpty(result);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -373,7 +360,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Enumerable.IsEmpty(result);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -403,7 +389,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.IfNot.Enumerable.Contains(result, _ => _.FileSystem != fs);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -423,7 +408,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsEqual(ex.ParamName, "target");
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -444,7 +428,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsFalse(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -476,7 +459,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(newFile));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -498,7 +480,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -521,7 +502,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -543,7 +523,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, newDir.FullName);
-            Test.If.Value.IsEqual(sut.Name, newDir.Name);
 
         }
 
@@ -564,7 +543,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsFalse(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -592,18 +570,17 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs1.Exists(dir));
             Test.If.Value.IsTrue(fs1.Exists(subDir));
             Test.If.Value.IsTrue(fs1.Exists(file));
-            Test.IfNot.Value.IsTrue(fs1.Exists(newDir));
-            Test.IfNot.Value.IsTrue(fs1.Exists(newSubDir));
-            Test.IfNot.Value.IsTrue(fs1.Exists(newFile));
-            Test.IfNot.Value.IsTrue(fs2.Exists(dir));
-            Test.IfNot.Value.IsTrue(fs2.Exists(subDir));
-            Test.IfNot.Value.IsTrue(fs2.Exists(file));
+            Test.If.Value.IsFalse(fs1.Exists(newDir));
+            Test.If.Value.IsFalse(fs1.Exists(newSubDir));
+            Test.If.Value.IsFalse(fs1.Exists(newFile));
+            Test.If.Value.IsFalse(fs2.Exists(dir));
+            Test.If.Value.IsFalse(fs2.Exists(subDir));
+            Test.If.Value.IsFalse(fs2.Exists(file));
             Test.If.Value.IsTrue(fs2.Exists(newDir));
             Test.If.Value.IsTrue(fs2.Exists(newSubDir));
             Test.If.Value.IsTrue(fs2.Exists(newFile));
             Test.If.Reference.IsEqual(fs1, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -623,7 +600,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsEqual(ex.ParamName, "target");
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -644,7 +620,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsFalse(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -668,15 +643,14 @@ namespace TestDrivenDiscipline_uTests {
             Test.IfNot.Action.ThrowsException(() => result = sut.MoveTo(target), out Exception _);
 
             Test.If.Value.IsTrue(result);
-            Test.IfNot.Value.IsTrue(fs.Exists(dir));
-            Test.IfNot.Value.IsTrue(fs.Exists(subDir));
-            Test.IfNot.Value.IsTrue(fs.Exists(file));
+            Test.If.Value.IsFalse(fs.Exists(dir));
+            Test.If.Value.IsFalse(fs.Exists(subDir));
+            Test.If.Value.IsFalse(fs.Exists(file));
             Test.If.Value.IsTrue(fs.Exists(newDir));
             Test.If.Value.IsTrue(fs.Exists(newSubDir));
             Test.If.Value.IsTrue(fs.Exists(newFile));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -698,7 +672,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -721,7 +694,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -743,7 +715,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsTrue(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, newDir.FullName);
-            Test.If.Value.IsEqual(sut.Name, newDir.Name);
 
         }
 
@@ -764,7 +735,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsFalse(fs.Exists(newDir));
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -789,21 +759,20 @@ namespace TestDrivenDiscipline_uTests {
             Test.IfNot.Action.ThrowsException(() => result = sut.MoveTo(target), out Exception _);
 
             Test.If.Value.IsTrue(result);
-            Test.IfNot.Value.IsTrue(fs1.Exists(dir));
-            Test.IfNot.Value.IsTrue(fs1.Exists(subDir));
-            Test.IfNot.Value.IsTrue(fs1.Exists(file));
-            Test.IfNot.Value.IsTrue(fs1.Exists(newDir));
-            Test.IfNot.Value.IsTrue(fs1.Exists(newSubDir));
-            Test.IfNot.Value.IsTrue(fs1.Exists(newFile));
-            Test.IfNot.Value.IsTrue(fs2.Exists(dir));
-            Test.IfNot.Value.IsTrue(fs2.Exists(subDir));
-            Test.IfNot.Value.IsTrue(fs2.Exists(file));
+            Test.If.Value.IsFalse(fs1.Exists(dir));
+            Test.If.Value.IsFalse(fs1.Exists(subDir));
+            Test.If.Value.IsFalse(fs1.Exists(file));
+            Test.If.Value.IsFalse(fs1.Exists(newDir));
+            Test.If.Value.IsFalse(fs1.Exists(newSubDir));
+            Test.If.Value.IsFalse(fs1.Exists(newFile));
+            Test.If.Value.IsFalse(fs2.Exists(dir));
+            Test.If.Value.IsFalse(fs2.Exists(subDir));
+            Test.If.Value.IsFalse(fs2.Exists(file));
             Test.If.Value.IsTrue(fs2.Exists(newDir));
             Test.If.Value.IsTrue(fs2.Exists(newSubDir));
             Test.If.Value.IsTrue(fs2.Exists(newFile));
             Test.If.Reference.IsEqual(fs1, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -823,7 +792,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsEqual(ex.ParamName, "name");
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
         }
 
         [TestMethod]
@@ -840,7 +808,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsEqual(ex.ParamName, "name");
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
         }
 
         [TestMethod]
@@ -859,7 +826,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Reference.IsEqual(fs, result.FileSystem);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -880,7 +846,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Reference.IsEqual(fs, result.FileSystem);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -900,7 +865,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsEqual(ex.ParamName, "name");
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -918,7 +882,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Value.IsEqual(ex.ParamName, "name");
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -938,7 +901,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Reference.IsEqual(fs, result.FileSystem);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 
@@ -959,7 +921,6 @@ namespace TestDrivenDiscipline_uTests {
             Test.If.Reference.IsEqual(fs, result.FileSystem);
             Test.If.Reference.IsEqual(fs, sut.FileSystem);
             Test.If.Value.IsEqual(sut.Path, dir.FullName);
-            Test.If.Value.IsEqual(sut.Name, dir.Name);
 
         }
 

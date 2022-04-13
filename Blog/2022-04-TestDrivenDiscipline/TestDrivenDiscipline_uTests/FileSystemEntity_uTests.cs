@@ -25,7 +25,7 @@ namespace TestDrivenDiscipline_uTests {
             IFileSystem fs = new FakeFileSystem();
             IFileSystemEntity entity = default;
 
-            Test.IfNot.Action.ThrowsException(() => entity = new DummyFileSystemEntity(fs), out ArgumentNullException _);
+            Test.IfNot.Action.ThrowsException(() => entity = new DummyFileSystemEntity(fs), out Exception _);
 
             Test.If.Reference.IsEqual(fs, entity.FileSystem);
 
